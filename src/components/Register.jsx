@@ -11,7 +11,7 @@ const Register = () => {
 
     const onFinish = (values) => {
 
-        axios.post("http://localhost:8080/auth/signup",values).then(result=>{
+        axios.post("http://localhost:8081/register/signup",values).then(result=>{
          
          console.log(result.data)
          
@@ -49,7 +49,7 @@ const Register = () => {
         } 
 
         {
-          success=="failed" ?<Alert message="Email is already registered"  type="error"/>:"" 
+          success=="failed" ?<Alert message="Could not inserted"  type="error"/>:"" 
         }
           
           <h1>Signup here</h1>
@@ -84,12 +84,12 @@ const Register = () => {
     </Form.Item>
 
     <Form.Item
-      label="Price"
-      name="price"
+      label="Email"
+      name="email"
       rules={[
         {
           required: true,
-          message: 'Please input your price!',
+          message: 'Please input your email!',
         },
       ]}
     >
@@ -97,12 +97,12 @@ const Register = () => {
     </Form.Item>
 
     <Form.Item
-      label="Quantity"
-      name="quantity"
+      label="Phone Number"
+      name="phonenumber"
       rules={[
         {
           required: true,
-          message: 'Please input your quantity!',
+          message: 'Please input your Phone Number!',
         },
       ]}
     >
@@ -110,19 +110,30 @@ const Register = () => {
     </Form.Item>
 
     <Form.Item
-      label="Brand"
-      name="brand"
+      label="Education Detail1"
+      name="educationdetail1"
       rules={[
         {
           required: true,
-          message: 'Please input your brand!',
+          message: 'Please input your Education Detail1',
         },
       ]}
     >
      <Input />  
     </Form.Item>
 
-
+    <Form.Item
+      label="Education Detail2"
+      name="educationdetail2"
+      rules={[
+        {
+          required: true,
+          message: 'Please input your Education Detail1',
+        },
+      ]}
+    >
+     <Input />  
+    </Form.Item>
      
 
     <Form.Item

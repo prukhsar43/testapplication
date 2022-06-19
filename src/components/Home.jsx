@@ -3,6 +3,7 @@ import React, { useEffect,useState } from 'react';
 import { Col, Row } from 'antd';
 import { Button, Modal,Input } from 'antd';
 import axios from 'axios';
+import config from './config';
 
 const Home = () =>{
 
@@ -14,40 +15,35 @@ const columns = [
     render: (text) => <a>{text}</a>,
   },
   {
-    title: 'Price',
-    dataIndex: 'price',
-    key: 'price',
+    title: 'Email',
+    dataIndex: 'email',
+    key: 'email',
   },
 
   {
-    title: 'Quantity',
-    dataIndex: 'quantity',
-    key: 'quantity',
+    title: 'Phone Number',
+    dataIndex: 'phonenumber',
+    key: 'phonenumber',
   },
 
   {
-    title: 'Brand',
-    dataIndex: 'brand',
-    key: 'brand',
+    title: 'Education detail 1',
+    dataIndex: 'educationdetail1',
+    key: 'educationdetail1',
+  },
+
+  {
+    title: 'Education detail 2',
+    dataIndex: 'educationdetail2',
+    key: 'educationdetail2',
   }
-
-
-   
-   
-   
+ 
   
    
 ];
  
          
- 
-
-           
-          
-          
-
-         
-   
+  
    
    
 
@@ -61,7 +57,7 @@ const columns = [
 
    useEffect(()=>{
        
-        axios.get("http://localhost:8080/user/", {
+        axios.get(`${config.URL}user/`, {
           headers: headers
         }).then(response=>{
 
@@ -85,7 +81,7 @@ const columns = [
     <Row style={{marginTop:"150px"}}>
       
       <Col span={12} offset={6}>
-     <h1>Product Details</h1>
+     <h1>Student Details</h1>
     <Table columns={columns} dataSource={data} />
     </Col>
 </Row>
