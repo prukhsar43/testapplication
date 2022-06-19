@@ -7,11 +7,34 @@ import axios from 'axios'
 const Register = () => {
 
   const [success,setSuccess]=useState(false)
-   
+   const[file,setFile]=useState("")
 
     const onFinish = (values) => {
 
-        axios.post("http://localhost:8081/register/signup",values).then(result=>{
+          const formData=new FormData();
+          formData.append("name",values.name);
+          formData.append("email",values.email);
+          formData.append("phonenumber",values.phonenumber);
+          formData.append("educationdetail1",values.educationdetail1);
+          formData.append("educationdetail2",values.educationdetail2);
+          formData.append("file",file)
+
+
+          const configFile={
+
+            headers:{
+              'content-type': 'multipart/form-data'
+              
+            }
+          }
+
+
+
+
+
+
+
+        axios.post("http://localhost:8081/register/signup",formData,configFile).then(result=>{
          
          console.log(result.data)
          
@@ -36,7 +59,13 @@ const Register = () => {
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
       };
+      
+      const onFileChange=(e)=>{
 
+            setFile(e.target.files[0])
+
+
+      }
   return (
 
     <Row style={{marginTop:"150px"}}>
@@ -108,6 +137,20 @@ const Register = () => {
     >
      <Input /> 
     </Form.Item>
+
+    <Form.Item
+      label="File"
+      name="file"
+      rules={[
+        {
+          required: true,
+          message: 'Please input your Phone Number!',
+        },
+      ]}
+    > 
+
+     <input type="file"  onChange={onFileChange}/>
+     </Form.Item>
 
     <Form.Item
       label="Education Detail1"

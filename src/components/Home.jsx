@@ -2,9 +2,10 @@ import { Space, Table, Tag } from 'antd';
 import React, { useEffect,useState } from 'react';
 import { Col, Row } from 'antd';
 import { Button, Modal,Input } from 'antd';
+import { Card } from 'antd';
 import axios from 'axios';
 import config from './config';
-
+const { Meta } = Card;
 const Home = () =>{
 
 const columns = [
@@ -36,6 +37,16 @@ const columns = [
     title: 'Education detail 2',
     dataIndex: 'educationdetail2',
     key: 'educationdetail2',
+  },
+
+  {
+    title: 'Profile Picture',
+     
+    key: 'profilePicture',
+
+    render:(row,record)=>(
+      <img width="50px" height="50px" src={record.profilePicture} />
+    )
   }
  
   
@@ -64,6 +75,8 @@ const columns = [
             if(response["data"].data){
 
               setData(response["data"].data)
+
+              console.log(response)
               
             }
 
@@ -73,11 +86,11 @@ const columns = [
 
    },[])
 
-
+          
 
 
   return(
-
+ 
     <Row style={{marginTop:"150px"}}>
       
       <Col span={12} offset={6}>
@@ -85,6 +98,7 @@ const columns = [
     <Table columns={columns} dataSource={data} />
     </Col>
 </Row>
+                     
   )
 } 
 
