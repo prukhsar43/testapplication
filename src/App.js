@@ -8,6 +8,8 @@ import {
 } from "react-router-dom";
 import Register from './components/Register';
 import Home from './components/Home';
+import Resume from './components/Resume'
+import Votesubmit from './components/Votesubmit';
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
       
       <Route path="/register" element={<Register />}/>
       <Route path="/home" element={<Home />}/>
+      <Route path="/resume" element={<Resume />}/>
+      <Route path="/vote" element={<Votesubmit />}/>
  
     </Routes>
       

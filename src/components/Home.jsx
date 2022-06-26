@@ -45,7 +45,7 @@ const columns = [
     key: 'profilePicture',
 
     render:(row,record)=>(
-      <img width="50px" height="50px" src={record.profilePicture} />
+      <img width="50px" height="50px"  src={record.profilePicture} />
     )
   }
  
